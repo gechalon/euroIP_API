@@ -1,0 +1,94 @@
+{
+  "api_version": "2022-11-15",
+  "created": 1680259694,
+  "data": {
+    "object": {
+      "after_expiration": null,
+      "allow_promotion_codes": null,
+      "amount_subtotal": 1990,
+      "amount_total": 1990,
+      "automatic_tax": {
+        "enabled": false,
+        "status": null
+      },
+      "billing_address_collection": null,
+      "cancel_url": "http://localhost:5000/subscripcion_cancelada",
+      "client_reference_id": "cus_Nct6Cb76PRUjoC",
+      "consent": null,
+      "consent_collection": null,
+      "created": 1680259580,
+      "currency": "eur",
+      "currency_conversion": null,
+      "custom_fields": [],
+      "custom_text": {
+        "shipping_address": null,
+        "submit": null
+      },
+      "customer": "cus_NcvLkEptDX6yYj",
+      "customer_creation": "always",
+      "customer_details": {
+        "address": {
+          "city": null,
+          "country": "ES",
+          "line1": null,
+          "line2": null,
+          "postal_code": null,
+          "state": null
+        },
+        "email": "er@er.com",
+        "name": "vsf",
+        "phone": null,
+        "tax_exempt": "none",
+        "tax_ids": []
+      },
+      "customer_email": null,
+      "expires_at": 1680345979,
+      "id": "cs_test_a1Git3oZ1aW4BlJ3GXgJkafoRYw96eyf53IRJNPA0q35QfmDSenhbLsp0a",
+      "invoice": "in_1MrfVAEFh32KkLV9oLHOtfWD",
+      "invoice_creation": null,
+      "livemode": false,
+      "locale": null,
+      "metadata": {
+        "client_id": "cus_Nct6Cb76PRUjoC"
+      },
+      "mode": "subscription",
+      "object": "checkout.session",
+      "payment_intent": null,
+      "payment_link": null,
+      "payment_method_collection": "always",
+      "payment_method_options": null,
+      "payment_method_types": [
+        "card"
+      ],
+      "payment_status": "paid",
+      "phone_number_collection": {
+        "enabled": false
+      },
+      "recovered_from": null,
+      "setup_intent": null,
+      "shipping_address_collection": null,
+      "shipping_cost": null,
+      "shipping_details": null,
+      "shipping_options": [],
+      "status": "complete",
+      "submit_type": null,
+      "subscription": "sub_1MrfVAEFh32KkLV9KgPqf0c0",
+      "success_url": "http://localhost:5000/subscripcion_exitosa?session_id={CHECKOUT_SESSION_ID}",
+      "total_details": {
+        "amount_discount": 0,
+        "amount_shipping": 0,
+        "amount_tax": 0
+      },
+      "url": null
+    }
+  },
+  "id": "evt_1MrfVCEFh32KkLV9PZw2u2N6",
+  "livemode": false,
+  "object": "event",
+  "pending_webhooks": 1,
+  "request": {
+    "id": null,
+    "idempotency_key": null
+  },
+  "type": "checkout.session.completed"
+}

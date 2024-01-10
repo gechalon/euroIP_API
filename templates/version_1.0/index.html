@@ -1,0 +1,347 @@
+<!DOCTYPE HTML>
+<!--
+	Minimaxing by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Minimaxing by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="./static/main.css" />
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+			 integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+			 crossorigin=""/>
+		<!-- Make sure you put this AFTER Leaflet's CSS -->
+		 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+			 integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+			 crossorigin="">
+			 
+		</script>
+	</head>
+	<body>
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+
+								<header id="header">
+									<h1><a href="index.html" id="logo">Minimaxing</a></h1>
+									<nav id="nav">
+										<a href="" class="current-page-item">Homepage</a>
+										<a href="twocolumn2.html">Two Column #2</a>
+										<a href="onecolumn.html">One Column</a>
+										<a href="./threecolumn.html">Three Column</a>
+									</nav>
+								</header>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			<!-- Banner -->
+			
+				<div id="banner-wrapper">
+					<div class="container">
+						<div id="banner">
+							<h2>IP de cliente: {{ ip_address }}</h2>
+							<h2>Es IP de proxy: {{ es_proxy }}</h2>
+							<span>user_agent : 
+								<ul>
+								{% for key, value in user_agent.items() %}
+								<li>{{ key }} : {{ value }}</li>
+								{% endfor %}
+								</ul>
+							</span>
+							<span>Headers : 
+								<ul>
+								{% for key, value in headers_dict.items() %}
+								<li>{{ key }} : {{ value }}</li>
+								{% endfor %}
+								</ul>
+							</span> 
+							<span>IP data (ipwhois) for {{ ip_address }}:
+								<ul>
+								{% for key, value in ipinfo_ipwhois.items() %}
+								<li>{{ key }} : {{ value }}</li>
+								{% endfor %}
+								</ul>
+								
+							</span>
+							<span>IP data (GeoIP) for (85.85.40.166):
+								<ul>
+								{% for key, value in ipinfo_bdGeoIP.items() %}
+								<li>{{ key }} : {{ value }}</li>
+								{% endfor %}
+								</ul>
+								
+							</span>
+							<span>fuzzy_geoloc_lat:{{fuzzy_geoloc_lat}}	
+								fuzzy_geoloc_lon:{{fuzzy_geoloc_lon}}									
+								radius:{{radius}}
+							</span>
+							<span>aproxZone_json for (85.85.40.166):{{aproxZone_json}}
+								
+								
+							</span>
+							<span>is_using_tor:{{is_using_tor}}	
+																	
+								
+							</span>
+						</div>						
+					</div>
+				</div>
+
+			<!-- Main -->
+				<div id="main">
+					<div class="container">
+						<div class="row main-row">
+							<div class="col-4 col-12-medium" id="map" style="height:80vh;width:50vw;">
+
+								<!-- <section>
+									<h2>Welcome to Minimaxing!</h2>
+									<p>This is <strong>Minimaxing</strong>, a fully responsive HTML5 site template designed by <a href="http://twitter.com/ajlkn">AJ</a> and released for free by <a href="http://html5up.net">HTML5 UP</a>. It features
+									a simple, lightweight design, solid HTML5 and CSS3 code, and full responsive support for desktop, tablet, and small displays.</p>
+									<footer class="controls">
+										<a href="http://html5up.net" class="button">More cool designs ...</a>
+									</footer>
+								</section>-->
+
+							</div>
+							<div class="col-4 col-6-medium col-12-small">
+
+								<section>
+									<h2>Who are you guys?</h2>
+									<form action="/asn/" method="post" id="formulario_asn">
+									  
+									  <div>
+										<label for="ip_cliente" >ip_cliente:</label>
+										<input type="text" id="ip_cliente" name="ip_cliente" value="216.239.36.21">
+										<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+									  </div>
+									  <button type="submit" onClick="formulario_asn.setAttribute('action','/asn/'+formulario_asn.ip_cliente.value)">ASN</button>
+									</form>
+								</section>
+
+							</div>
+							<div class="col-4 col-6-medium col-12-small">
+
+								<section>
+									<h2>How about some links?</h2>
+									<div>
+										<div class="row">
+											<div class="col-6 col-12-small">
+												<ul class="link-list">
+													<li><a href="#">Sed neque nisi consequat</a></li>
+													<li><a href="#">Dapibus sed mattis blandit</a></li>
+													<li><a href="#">Quis accumsan lorem</a></li>
+													<li><a href="#">Suspendisse varius ipsum</a></li>
+													<li><a href="#">Eget et amet consequat</a></li>
+												</ul>
+											</div>
+											<div class="col-6 col-12-small">
+												<ul class="link-list">
+													<li><a href="#">Quis accumsan lorem</a></li>
+													<li><a href="#">Sed neque nisi consequat</a></li>
+													<li><a href="#">Eget et amet consequat</a></li>
+													<li><a href="#">Dapibus sed mattis blandit</a></li>
+													<li><a href="#">Vitae magna sed dolore</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</section>
+
+							</div>
+							<div class="col-6 col-12-medium">
+
+								<section>
+									<h2>An assortment of pictures and text</h2>
+									<p>Duis neque nisi, dapibus sed mattis quis, rutrum et accumsan.
+									Suspendisse nibh. Suspendisse vitae magna eget odio amet mollis
+									justo facilisis quis. Sed sagittis mauris amet tellus gravida
+									lorem ipsum dolor sit amet consequat blandit lorem ipsum dolor
+									sit amet consequat sed dolore.</p>
+									<ul class="big-image-list">
+										<li>
+											<a href="#"><img src="./static/images/pic3.jpg" alt="" class="left" /></a>
+											<h3>Magna Gravida Dolore</h3>
+											<p>Varius nibh. Suspendisse vitae magna eget et amet mollis justo
+											facilisis amet quis consectetur in, sollicitudin vitae justo. Cras
+											Maecenas eu arcu purus, phasellus fermentum elit.</p>
+										</li>
+										<li>
+											<a href="#"><img src="./static/images/pic4.jpg" alt="" class="left" /></a>
+											<h3>Magna Gravida Dolore</h3>
+											<p>Varius nibh. Suspendisse vitae magna eget et amet mollis justo
+											facilisis amet quis consectetur in, sollicitudin vitae justo. Cras
+											Maecenas eu arcu purus, phasellus fermentum elit.</p>
+										</li>
+										<li>
+											<a href="#"><img src="./static/images/pic5.jpg" alt="" class="left" /></a>
+											<h3>Magna Gravida Dolore</h3>
+											<p>Varius nibh. Suspendisse vitae magna eget et amet mollis justo
+											facilisis amet quis consectetur in, sollicitudin vitae justo. Cras
+											Maecenas eu arcu purus, phasellus fermentum elit.</p>
+										</li>
+									</ul>
+								</section>
+
+							</div>
+							<div class="col-6 col-12-medium">
+
+								<article class="blog-post">
+									<h2>Just another blog post</h2>
+									<a class="comments" href="#">33 comments</a>
+									<a href="#"><img src="./static/images/pic6.jpg" alt="" class="top blog-post-image" /></a>
+									<h3>Magna Gravida Dolore</h3>
+									<p>Aenean non massa sapien. In hac habitasse platea dictumst.
+									Maecenas sodales purus et nulla sodales aliquam. Aenean ac
+									porttitor metus. In hac habitasse platea dictumst. Phasellus
+									blandit turpis in leo scelerisque mollis. Nulla venenatis
+									ipsum nec est porta rhoncus. Mauris sodales sed pharetra
+									nisi nec consectetur. Cras elit magna, hendrerit nec
+									consectetur in, sollicitudin vitae justo. Cras amet aliquet
+									Aliquam ligula turpis, feugiat id fermentum malesuada,
+									rutrum eget turpis. Mauris sodales sed pharetra nisi nec
+									consectetur. Cras elit magna, hendrerit nec consectetur
+									in sollicitudin vitae.</p>
+									<footer class="controls">
+										<a href="#" class="button">Continue Reading</a>
+									</footer>
+								</article>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<div class="container">
+						<div class="row">
+							<div class="col-8 col-12-medium">
+
+								<section>
+									<h2>How about a truckload of links?</h2>
+									<div>
+										<div class="row">
+											<div class="col-3 col-6-medium col-12-small">
+												<ul class="link-list">
+													<li><a href="#">Sed neque nisi consequat</a></li>
+													<li><a href="#">Dapibus sed mattis blandit</a></li>
+													<li><a href="#">Quis accumsan lorem</a></li>
+													<li><a href="#">Suspendisse varius ipsum</a></li>
+													<li><a href="#">Eget et amet consequat</a></li>
+												</ul>
+											</div>
+											<div class="col-3 col-6-medium col-12-small">
+												<ul class="link-list">
+													<li><a href="#">Quis accumsan lorem</a></li>
+													<li><a href="#">Sed neque nisi consequat</a></li>
+													<li><a href="#">Eget et amet consequat</a></li>
+													<li><a href="#">Dapibus sed mattis blandit</a></li>
+													<li><a href="#">Vitae magna sed dolore</a></li>
+												</ul>
+											</div>
+											<div class="col-3 col-6-medium col-12-small">
+												<ul class="link-list">
+													<li><a href="#">Sed neque nisi consequat</a></li>
+													<li><a href="#">Dapibus sed mattis blandit</a></li>
+													<li><a href="#">Quis accumsan lorem</a></li>
+													<li><a href="#">Suspendisse varius ipsum</a></li>
+													<li><a href="#">Eget et amet consequat</a></li>
+												</ul>
+											</div>
+											<div class="col-3 col-6-medium col-12-small">
+												<ul class="link-list">
+													<li><a href="#">Quis accumsan lorem</a></li>
+													<li><a href="#">Sed neque nisi consequat</a></li>
+													<li><a href="#">Eget et amet consequat</a></li>
+													<li><a href="#">Dapibus sed mattis blandit</a></li>
+													<li><a href="#">Vitae magna sed dolore</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</section>
+
+							</div>
+							<div class="col-4 col-12-medium">
+
+								<section>
+									<h2>Something of interest</h2>
+									<p>Duis neque nisi, dapibus sed mattis quis, rutrum accumsan sed.
+									Suspendisse eu varius nibh. Suspendisse vitae magna eget odio amet
+									mollis justo facilisis quis. Sed sagittis mauris amet tellus gravida
+									lorem ipsum dolor sit blandit.</p>
+									<footer class="controls">
+										<a href="#" class="button">Oh, please continue ....</a>
+									</footer>
+								</section>
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+
+								<div id="copyright">
+									&copy; Untitled. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script>
+				function getDistanciaMetros(lat1,lon1,lat2,lon2)
+				{
+				  rad = function(x) {return x*Math.PI/180;}
+				  var R = 6378.137; //Radio de la tierra en km 
+				  var dLat = rad( lat2 - lat1 );
+				  var dLong = rad( lon2 - lon1 );
+				  var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(rad(lat1)) * 
+				  Math.cos(rad(lat2)) * Math.sin(dLong/2) * Math.sin(dLong/2);
+				  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+				  //aquí obtienes la distancia en metros por la conversion 1Km =1000m
+				  var d = R * c * 1000;
+				  return Math.round(d) ; 
+				}
+				//dibujar el mapa openstreetmaps con circulo fuzzy
+				var fuzzyLat={{fuzzy_geoloc_lat}};
+				var fuzzyLon={{fuzzy_geoloc_lon}};
+				var radio={{radius}}*1000;
+				//var map = L.map('map').setView([43.29522508636364, -2.0087857814814813], 13);
+				var map = L.map('map').setView([fuzzyLat, fuzzyLon], 13);
+					L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+					maxZoom: 19,
+					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+				}).addTo(map);
+				
+				//var circle = L.circle([43.29690620594615, -2.005164478562734], {
+				var circle = L.circle([fuzzyLat, fuzzyLon], {
+					color: 'red',
+					fillColor: '#f03',
+					fillOpacity: 0.5,
+					radius: radio
+				}).addTo(map); 
+
+			</script>
+			<script src="./static/assets/js/jquery.min.js"></script>
+			<script src="./static/assets/js/browser.min.js"></script>
+			<script src="./static/assets/js/breakpoints.min.js"></script>
+			<script src="./static/assets/js/util.js"></script>
+			<script src="./static/assets/js/main.js"></script>
+
+	</body>
+</html>

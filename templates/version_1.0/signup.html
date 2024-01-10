@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="./static/main.css" />
+	</head>
+<body>
+	<form action="/signup" method="post" id="formulario">
+	  <div>
+		<label for="username">Username:</label>
+		<input type="text" id="username" name="username">
+	  </div>
+	  <div>
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password">
+	  </div>
+	  <div>
+		<label for="usertype">User Type:</label>
+		<select id="usertype" name="usertype">
+		  <option value="Free">Free</option>
+		  <option value="Business">Business</option>
+		  <option value="Corporation">Corporation</option>
+		  <option value="Unlimited">Unlimited</option>
+		</select>
+	  </div>
+	  <div>
+		<label for="userprofile">User Profile:</label>
+		<select id="userprofile" name="userprofile">
+		  <option value="security">security</option>
+		  <option value="asn">asn</option>
+		  <option value="device">device</option>
+		  <option value="fuzzyGeo">fuzzyGeo</option>
+		</select>
+	  </div>
+	  <button type="submit" >Sign Up</button>
+	</form>
+</body>
+</html>

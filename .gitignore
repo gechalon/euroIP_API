@@ -1,0 +1,19 @@
+# Carpetas que no quiero subir
+apoyos/
+respaldos/
+
+# Archivos específicos
+dockerdoc.txt
+textoWeb.txt
+
+# Archivos de entorno
+.env
+.env.*
+
+# Carpetas de dependencias y entornos virtuales
+node_modules/
+venv/
+
+# Archivos compilados o temporales de Python
+*.pyc
+__pycache__/

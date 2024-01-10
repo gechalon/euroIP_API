@@ -1,0 +1,79 @@
+ {
+  "after_expiration": null,
+  "allow_promotion_codes": null,
+  "amount_subtotal": 1990,
+  "amount_total": 1990,
+  "automatic_tax": {
+    "enabled": false,
+    "status": null
+  },
+  "billing_address_collection": null,
+  "cancel_url": "http://localhost:5000/subscripcion_cancelada",
+  "client_reference_id": "cus_Nct6Cb76PRUjoC",
+  "consent": null,
+  "consent_collection": null,
+  "created": 1680511472,
+  "currency": "eur",
+  "currency_conversion": null,
+  "custom_fields": [],
+  "custom_text": {
+    "shipping_address": null,
+    "submit": null
+  },
+  "customer": "cus_Ne12ARUNKdaEdN",
+  "customer_creation": "always",
+  "customer_details": {
+    "address": {
+      "city": null,
+      "country": "ES",
+      "line1": null,
+      "line2": null,
+      "postal_code": null,
+      "state": null
+    },
+    "email": "ee@cc.nbv",
+    "name": "bfda",
+    "phone": null,
+    "tax_exempt": "none",
+    "tax_ids": []
+  },
+  "customer_email": null,
+  "expires_at": 1680597872,
+  "id": "cs_test_a1juKcusUjXrJ8PKzAq5npEClxgCNSunx5lZOOheYz2jnHLm8gd7UnIMgr",
+  "invoice": "in_1Msj0PEFh32KkLV95RbieQyD",
+  "invoice_creation": null,
+  "livemode": false,
+  "locale": null,
+  "metadata": {
+    "client_id": "cus_Nct6Cb76PRUjoC"
+  },
+  "mode": "subscription",
+  "object": "checkout.session",
+  "payment_intent": null,
+  "payment_link": null,
+  "payment_method_collection": "always",
+  "payment_method_options": null,
+  "payment_method_types": [
+    "card"
+  ],
+  "payment_status": "paid",
+  "phone_number_collection": {
+    "enabled": false
+  },
+  "recovered_from": null,
+  "setup_intent": null,
+  "shipping_address_collection": null,
+  "shipping_cost": null,
+  "shipping_details": null,
+  "shipping_options": [],
+  "status": "complete",
+  "submit_type": null,
+  "subscription": "sub_1Msj0PEFh32KkLV9cRd9lPQh",
+  "success_url": "http://localhost:5000/subscripcion_exitosa?session_id={CHECKOUT_SESSION_ID}",
+  "total_details": {
+    "amount_discount": 0,
+    "amount_shipping": 0,
+    "amount_tax": 0
+  },
+  "url": null
+}

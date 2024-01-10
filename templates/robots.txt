@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /login
+Disallow: /contact
+Disallow: /docs
+Disallow: /signup
+Allow: /
+Allow: /pricing

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thanks for your order!</title>
+  <link rel="stylesheet" href="../static/css/style.css">
+  <script src="../static/js/client.js" defer></script>
+</head>
+<body>
+  <section>
+    <div class="product Box-root">
+      <div class="description Box-root">
+        <h3>Subscription to Starter plan successful!</h3>
+        <p>session_id : {{session_id}}</p></br>
+        <p>csrf_token : {{ csrf_token() }}</p>
+      </div>
+    </div>
+    <!--<form action="/useraccount" method="POST">-->
+    <form action="/create-portal-session" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <input type="hidden" id="session_id" name="session_id" value="{{session_id}}" />
+        <button id="checkout-and-portal-button" type="submit">Manage your billing information</button>
+    </form>
+  </section>
+</body>
+</html>

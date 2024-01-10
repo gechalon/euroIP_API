@@ -1,0 +1,258 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="API for Ip Address Info data Privacy">
+  <link rel="icon" type="image/x-icon" href="../static/images/favicon.png">
+  <meta name="keywords" content="Privacy, data, personal, API, gdpr, ccpa, geolocation" />
+  <meta name="robots" content="index, follow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../static/css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="../static/fonts/icomoon/style.css">
+  <link rel="stylesheet" href="../static/fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="../static/css/aos.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+  
+
+  
+  <title>Privacy4IP</title>
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="100">
+
+  <div class="site-mobile-menu site-navbar-target">
+    <div class="site-mobile-menu-header">
+      <div class="site-mobile-menu-close">
+        <span class="icofont-close js-menu-toggle"></span>
+      </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+  </div>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <a class="navbar-brand" href="/#">Privacy API<span class="text-primary">.</span></a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+		<ul class="navbar-nav mr-auto float-right" >
+			<li class="nav-item">
+			  <a href="/#data_section" class="nav-link">Data Privacy</a>
+			</li>
+			<li class="nav-item">
+			<a href="/#legal_section" class="nav-link">Regulations</a>
+			</li>
+			<li class="nav-item">
+			  <a href="{{ url_for('pricing') }}" class="nav-link">Pricing</a>
+			</li>
+			<li class="nav-item">
+			  <a href="{{ url_for('docs') }}" class="nav-link">Docs</a>
+			</li>		  
+			<li class="nav-item">
+			  <a href="#about-section" class="nav-link">About</a>
+			</li>
+			<li class="nav-item">
+			  <a href="{{ url_for('contact') }}" class="nav-link">Contact</a>
+			</li>	
+			<!-- <li class="nav-item">
+			  <a href="{{ url_for('product') }}" class="nav-link">producto</a>
+			</li>-->	
+		  </ul>
+		<ul class="navbar-nav site-menu float-right" >		  
+		{%if session['username'] : %}		 	
+		  <li class="cta-button-outline">
+			<a href="/useraccount#profile_container">
+			 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"	><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>
+			{{session['username']}}
+			</a>
+		  </li>
+		{%else : %}
+		  <li class="cta-button-outline"><a href="{{ url_for('login') }}">Log in</a></li>
+		  <li class="cta-primary"><a href="{{url_for('signup')}}">Create account</a></li>		 	
+		{%endif%}
+		</ul>
+	  </div>
+	</nav>
+
+	<div class="untree_co-section bg-light" id="pricing-section">
+    <div class="container">
+
+      <div class="row pricing-title">
+        <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="0">
+          <span class="caption">Plans</span>
+          <h2 class="heading">Pricing</h2>
+          <p>Pricing for everyone. Choose your plan now!</p>
+        </div>
+      </div> <!-- /.row -->
+
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <div class="row">
+		    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+			  <div class="pricing">
+				<div class="body">
+				  <div class="price">
+					<span class="price"><sup>$</sup>0</span>
+					<span class="d-block plan mb-4">Free</span>
+				  </div>
+				  <ul class="list-unstyled ul-check primary mb-5">
+					<li>6000 queries/month</li>
+					<li>Data split to improve privacity</li>
+					<li>For personal use/trial period/non-profit organizations. Contact us if you need more.</li>
+				  </ul>
+				  {%if not session['usertype'] or session['usertype']=="":%}<!--si NO estoy en la session de un usuario, muestro boton empezar-->
+					<p class="text-center mb-0"><a href="{{ url_for('signup') }}" class="btn btn-outline-primary">Get started</a></p>
+				  {%else :%}<!--si estoy en la session de un usuario, muestro boton suscribirse-->
+					<p class="text-center mb-0"><a href="{{ url_for('useraccount_info') }}" class="btn btn-outline-primary">Subscribe</a></p>
+				  {%endif%} 
+				</div>
+			  </div> <!-- /.pricing -->
+			</div> <!-- /.col-lg-4 -->
+			
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+			  <div class="pricing">
+				<div class="body">
+				  <div class="price">
+					<span class="price"><sup>$</sup>19.90</span><sub>/month</sub>
+					<span class="d-block plan mb-4">Business</span>
+				  </div>
+				  <ul class="list-unstyled ul-check primary mb-5">
+					<li>100000 queries/month</li>
+					<li>Data split to improve privacity</li>
+					<li>For Important online companies</li>
+				  </ul>
+				  {%if not session['usertype'] or session['usertype']=="":%}<!--si NO estoy en la session de un usuario, muestro boton empezar-->
+					<p class="text-center mb-0"><a href="{{ url_for('signup') }}" class="btn btn-outline-primary">Get started</a></p>
+				  {%else :%}<!--si estoy en la session de un usuario, muestro boton suscribirse-->
+					<p class="text-center mb-0"><a href="/useraccount#billing_container" class="btn btn-outline-primary">Subscribe</a></p>
+				  {%endif%} 		
+				</div>
+			  </div> <!-- /.pricing -->
+			</div> <!-- /.col-lg-4 -->
+
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300" >
+			  <div class="pricing">
+				<div class="body">
+				  <div class="price">
+					<span class="price"><sup>$</sup>39.90</span><sub>/month</sub>
+					<span class="d-block plan mb-4">Corporation</span>
+				  </div>
+				  <ul class="list-unstyled ul-check primary mb-5">
+					<li>1 Million queries/month</li>
+					<li>Data split to improve privacity</li>
+					<li>For Major online companies</li>
+				  </ul>
+				  {%if not session['usertype'] or session['usertype']=="":%}<!--si NO estoy en la session de un usuario, muestro boton empezar-->
+					<p class="text-center mb-0"><a href="{{ url_for('signup') }}" class="btn btn-outline-primary">Get started</a></p>
+				  {%else :%}<!--si estoy en la session de un usuario, muestro boton suscribirse-->
+					<p class="text-center mb-0"><a href="/useraccount#billing_container" class="btn btn-outline-primary">Subscribe</a></p>
+				  {%endif%} 	
+				</div>
+			  </div> <!-- /.pricing -->
+			</div> <!-- /.col-lg-4 -->
+
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300" >
+			  <div class="pricing">
+				<div class="body">
+				  <div class="price">
+					<span class="price"><sup>$</sup><span>Customized</span></span>
+					<span class="d-block plan mb-4">Unlimited</span>
+				  </div>
+				  <ul class="list-unstyled ul-check primary mb-5">
+					<li>Several million queries/month</li>
+					<li>Data split to improve privacity</li>
+					<li>For leading companies with no limits</li>
+					
+				  </ul>
+				  <p class="text-center mb-0"><a href="{{ url_for('contact') }}" class="btn btn-outline-primary">Contact Sales</a></p>
+				</div>
+			  </div> <!-- /.pricing -->
+			</div> <!-- /.col-lg-4 -->
+          </div> <!-- /.row -->
+        </div> <!-- /.col-lg-8 -->
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+  </div> <!-- /.untree_co-section -->
+
+  
+  <div class="site-footer">
+
+    <div class="footer-dots"></div> <!-- /.footer-dots -->
+    <div class="container">
+
+      <div class="row">
+        <div class="col-lg-8">
+			<div class="widget" id="about-section">
+				<h5>About <span class="text-primary">Privacy4IP</span>.</h5>
+				<p>
+				Privacy4IP is an European company. Our servers are located in Europe.</br> Our state-of-the-art API complies with the <a href="/#international_section">most demanding international regulations</a> to protect the privacy of your personal data, maintaining the maximum statistical or security interest.</p>
+				  </br>
+				<h5>About <span class="text-primary">me</span>.</h5>
+				<p>
+				Privacy4IP was created by me, Gorka Echeverria. Software engineer.</br> Concerned about the present of Data Privacy in the world of data engineering.</p>
+			  
+			  </div> <!-- /.widget -->
+          
+        </div> <!-- /.col-lg-3 -->
+
+        <div class="col-lg-3 ml-auto">
+          <div class="widget">
+            <h3>Navigation</h3>
+            <ul class="list-unstyled float-left links">
+              <li><a href="/#">Home</a></li>
+              <li><a href="/#data_section">Privacy protection</a></li>
+			  <li><a href="/#legal_section">Regulations</a></li>
+              <li><a href="/docs">Docs</a></li>
+              <li><a href="/pricing">Pricing</a></li>
+              <li><a href="#about-section">About</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </div> <!-- /.widget -->
+        </div> <!-- /.col-lg-3 -->
+		
+      </div> <!-- /.row -->
+
+      <div class="row mt-5">
+        <div class="col-12 text-center">
+          <p class="copyright">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ -->
+          </p>
+        </div>
+      </div>
+    </div> <!-- /.container -->
+  </div> <!-- /.site-footer -->
+
+
+ <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <script src="../static/js/jquery-3.4.1.min.js"></script>
+  <script src="../static/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="../static/js/popper.min.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/owl.carousel.min.js"></script>
+  <script src="../static/js/jquery.easing.1.3.js"></script>
+  <script src="../static/js/jquery.animateNumber.min.js"></script>
+  <script src="../static/js/jquery.waypoints.min.js"></script>
+  <script src="../static/js/jquery.fancybox.min.js"></script>
+  <script src="../static/js/aos.js"></script>  
+  <script src="../static/js/custom.js"></script>  
+  <script src="../static/js/propio.js"></script>
+  
+</body>
+
+</html>

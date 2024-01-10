@@ -1,0 +1,403 @@
+<!-- /*
+* Template Name: Landing
+* Template Author: Untree.co
+* Author URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="API for Ip Address Info data Privacy">
+	<link rel="icon" type="image/x-icon" href="../static/images/favicon.png">
+	<meta name="keywords" content="Privacy, data, personal, API, gdpr, ccpa, geolocation" />
+	<meta name="robots" content="index, follow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../static/css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="../static/fonts/icomoon/style.css">
+  <link rel="stylesheet" href="../static/fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="../static/css/aos.css">
+  <link rel="stylesheet" href="../static/css/prism.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+
+  <title>Privacy 4 IP</title>
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="100">
+
+  <div class="site-mobile-menu site-navbar-target">
+    <div class="site-mobile-menu-header">
+      <div class="site-mobile-menu-close">
+        <span class="icofont-close js-menu-toggle"></span>
+      </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+  </div>
+
+
+  
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <a class="navbar-brand" href="/#">Privacy 4 IP<span class="text-primary">.</span></a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+		<ul class="navbar-nav mr-auto float-right" >
+			<li class="nav-item">
+			  <a href="/#data_section" class="nav-link">Data Privacy</a>
+			</li>
+			<li class="nav-item">
+			<a href="/#legal_section" class="nav-link">Regulations</a>
+			</li>
+			<li class="nav-item">
+			  <a href="{{ url_for('pricing') }}" class="nav-link">Pricing</a>
+			</li>
+			<li class="nav-item">
+			  <a href="{{ url_for('docs') }}" class="nav-link">Docs</a>
+			</li>		  
+			<li class="nav-item">
+			  <a href="#about-section" class="nav-link">About</a>
+			</li>
+			<li class="nav-item">
+			  <a href="{{ url_for('contact') }}" class="nav-link">Contact</a>
+			</li>	
+			<!-- <li class="nav-item">
+			  <a href="{{ url_for('product') }}" class="nav-link">producto</a>
+			</li>-->	
+		  </ul>
+		<ul class="navbar-nav site-menu float-right" >		  
+		{%if session['username'] : %}		 	
+		  <li class="cta-button-outline">
+			<a href="/useraccount#profile_container">
+			 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"	><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>
+			{{session['username']}}
+			</a>
+		  </li>
+		{%else : %}
+		  <li class="cta-button-outline"><a href="{{ url_for('login') }}">Log in</a></li>
+		  <li class="cta-primary"><a href="{{url_for('signup')}}">Create account</a></li>		 	
+		{%endif%}
+		</ul>
+	  </div>
+	</nav>
+<div class="untree_co-section" id="contact-section">
+    <div class="container">
+      <div class="row mb-5"  data-aos="fade-up" data-aos-delay="0">
+        <div class="col-12 text-center">
+          <span class="caption">Documentation</span>
+          <h2 class="heading">Code Examples</h2>
+          <p>Code examples which enable you to integrate our API with your software and services</p>
+		   						
+        </div>
+      </div> <!-- /.row -->
+      <div class="row">
+        <div class="col-lg-12">	
+			<nav>
+			  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+				<a class="nav-item nav-link active" id="nav-python-tab" data-toggle="tab" href="#nav-python" role="tab" aria-controls="nav-python" aria-selected="true">Python</a>
+				<a class="nav-item nav-link" id="nav-php-tab" data-toggle="tab" href="#nav-php" role="tab" aria-controls="nav-php" aria-selected="false">Php</a>
+				<a class="nav-item nav-link" id="nav-java-tab" data-toggle="tab" href="#nav-java" role="tab" aria-controls="nav-java" aria-selected="false">Java</a>
+				<a class="nav-item nav-link " id="nav-c-tab" data-toggle="tab" href="#nav-c" role="tab" aria-controls="nav-c" aria-selected="false">C#</a>
+				<a class="nav-item nav-link" id="nav-ruby-tab" data-toggle="tab" href="#nav-ruby" role="tab" aria-controls="nav-ruby" aria-selected="false">Ruby</a>
+				<a class="nav-item nav-link" id="nav-curl-tab" data-toggle="tab" href="#nav-curl" role="tab" aria-controls="nav-curl" aria-selected="false">Curl</a>
+			  </div>
+			</nav>
+			<div class="tab-content" id="nav-tabContent">
+			  <div class="tab-pane fade show active" id="nav-python" role="tabpanel" aria-labelledby="nav-python-tab">
+			   <div class="card">
+				  <div class="card-header">
+					PYTHON example
+				  </div>
+				  <div class="card-body">
+					  <pre>
+					   <code class="language-python">
+	import requests
+
+	profile = "security"		#your profile:security/asn/fuzzygeo/device
+	user_ip = "87.85.40.100" 	#the ip address variable
+	jwt_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"		#the token you received associated with your user
+	server = "https://www.privacyapi.eu"	#our server
+
+	# Construct API URL 
+	url = f"{server}/{profile}/{user_ip}?jwt={jwt_token}"
+
+	# Make the GET request to the API
+	response = requests.get(url)
+
+	# Print response if required
+	print(response)
+					   </code>		
+					  </pre>
+				  </div>
+				</div>			
+			  </div>
+			  
+			  <div class="tab-pane fade" id="nav-php" role="tabpanel" aria-labelledby="nav-php-tab">
+			  <div class="card">
+				  <div class="card-header">
+					PHP example
+				  </div>
+				  <div class="card-body">
+					  <pre>
+					   <code class="language-php">
+	$server = "https://www.privacyapi.eu"; 	// our server
+	$profile = "security";	//your profile:security/asn/fuzzygeo/device
+	$user_ip = "85.85.40.100";	//the ip address variable
+	$jwt_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";		//the token you received associated with your user
+
+	// Build the API URL
+	$url = "{$server}/{$profile}/{$user_ip}?jwt={$jwt_token}";
+
+	// Send a GET request to the API
+	$response = file_get_contents($url);							
+
+	// Print the response if required
+	$json_response = json_decode($response, true);
+	print_r($json_response);
+					   </code>	
+					  </pre>					  
+				  </div>
+				  <div class="card-footer">
+					This is a simpler way to make HTTP requests in PHP, but there are more advanced libraries like cURL or Guzzle that you can use if you need more control over the request or response.
+				  </div>
+				</div>
+			  </div>
+			  
+			  <div class="tab-pane fade" id="nav-java" role="tabpanel" aria-labelledby="nav-java-tab">
+			  <div class="card">
+				  <div class="card-header">
+					JAVA example
+				  </div>
+				  <div class="card-body">
+					  <pre>
+					   <code class="language-java">						  
+	import java.io.BufferedReader;
+	import java.io.IOException;
+	import java.io.InputStreamReader;
+	import java.net.HttpURLConnection;
+	import java.net.URL;
+
+	public class ApiCall {
+		public static void main(String[] args) throws IOException {
+			String server = "https://www.privacyapi.eu"; 	// our server
+			String profile = "security";	//your profile:security/asn/fuzzygeo/device
+			String user_ip = "85.85.40.100";	//the ip address variable
+			String jwt_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";		//the token you received associated with your user
+
+			// Build the API URL
+			String url = String.format("%s/%s/%s?jwt=%s", server, profile, user_ip, jwt_token);
+
+			// Send a GET request to the API
+			HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+			connection.setRequestMethod("GET");
+
+			// Read the response and build a response string if required
+			BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			StringBuilder response = new StringBuilder();
+			String line;
+			while ((line = in.readLine()) != null) {
+				response.append(line);
+			}
+			in.close();
+
+			// Print the response 
+			System.out.println(response.toString());
+		}
+	}
+	
+					   </code>	
+					  </pre>
+				  </div>
+				</div>
+			  </div>
+			  
+			  <div class="tab-pane fade " id="nav-c" role="tabpanel" aria-labelledby="nav-c-tab">
+			  <div class="card">
+				  <div class="card-header">
+					C# example
+				  </div>
+				  <div class="card-body">
+					  <pre>
+					   <code class="language-c#">	
+	using System;
+	using System.IO;
+	using System.Net;
+
+	class Program
+	{
+		static void Main()
+		{
+			string server = "https://www.privacyapi.eu"; // our server
+			string profile = "security"; // your profile:security/asn/fuzzygeo/device
+			string user_ip = "85.85.40.100"; //the ip address variable
+			string jwt_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"; //the token you received associated with your user
+
+			// Build the API URL
+			string url = $"{server}/{profile}/{user_ip}?jwt={jwt_token}";
+
+			// Send a GET request to the API
+			HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+			request.Method = "GET";
+			HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+			// Read the response and build a response string if required
+			Stream stream = response.GetResponseStream();
+			StreamReader reader = new StreamReader(stream);
+			string responseText = reader.ReadToEnd();
+			reader.Close();
+
+			// Print the response
+			Console.WriteLine(responseText);
+		}
+	}
+					   </code>	
+					  </pre>
+				  </div>
+				</div>
+			  </div>
+			  
+			  <div class="tab-pane fade" id="nav-ruby" role="tabpanel" aria-labelledby="nav-ruby-tab">
+			  <div class="card">
+				  <div class="card-header">
+					RUBY example
+				  </div>
+				  <div class="card-body">
+					  <pre>
+					   <code class="language-ruby">	
+	require 'net/http'
+	require 'json'
+
+	server = "https://www.privacyapi.eu" # our server
+	profile = "security" # your profile:security/asn/fuzzygeo/device
+	user_ip = "85.85.40.100" #the ip address variable
+	jwt_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9" 	# the token you received associated with your user
+
+	# Build the API URL
+	url = "#{server}/#{profile}/#{user_ip}?jwt=#{jwt_token}"
+
+	# Send a GET request to the API
+	uri = URI(url)
+	response = Net::HTTP.get(uri)
+
+	# # Parse the response as Hash if required
+	json_response = JSON.parse(response)
+
+	# Print the response
+	puts json_response
+					   </code>
+					  </pre>
+				  </div>
+				</div>
+			  </div>
+			  
+			 <div class="tab-pane fade" id="nav-curl" role="tabpanel" aria-labelledby="nav-curl-tab">
+			  <div class="card">
+				  <div class="card-header">
+					CURL example
+				  </div>
+				  <div class="card-body">
+					<pre>
+					  <code class="language-bash">	
+	<b>$curl https://www.privacyapi.eu/security/80.251.8.5?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</b>					
+					  </code>
+					  where :
+					  "https://www.privacyapi.eu" is our server
+					  "security" is your profile: security/asn/fuzzygeo/device
+					  "85.85.40.100" represents the ip address variable
+					  jwt="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9" is the token you received associated with your user									  
+					</pre>						
+				  </div>				 
+				</div>				
+			  </div>
+			</div>
+		</div> <!-- /.col-lg-12 -->
+        
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+  </div> <!-- /.untree_co-section bg-light -->
+ 
+
+  <div class="site-footer">
+
+    <div class="footer-dots"></div> <!-- /.footer-dots -->
+    <div class="container">
+
+      <div class="row">
+        <div class="col-lg-8">
+			<div class="widget" id="about-section">
+				<h5>About <span class="text-primary">
+Privacy4IP</span>.</h5>
+				<p>
+Privacy4IP is an European company. Our servers are located in Europe.</br> Our state-of-the-art API complies with the <a href="/#international_section">most demanding international regulations</a> to protect the privacy of your personal data, maintaining the maximum statistical or security interest.</p>
+				  </br>
+				<h5>About <span class="text-primary">me</span>.</h5>
+				<p>
+Privacy4IP was created by me, Gorka Echeverria. Software engineer.</br> Concerned about the present of data protection in the world of data engineering.</p>
+			  
+			</div> <!-- /.widget -->
+          
+        </div> <!-- /.col-lg-3 -->
+
+        <div class="col-lg-3 ml-auto">
+          <div class="widget">
+            <h3>Navigation</h3>
+            <ul class="list-unstyled float-left links">
+              <li><a href="/#">Home</a></li>
+              <li><a href="/#data_section">Privacy protection</a></li>
+			  <li><a href="/#legal_section">Regulations</a></li>
+              <li><a href="/docs">Docs</a></li>
+              <li><a href="/pricing">Pricing</a></li>
+              <li><a href="#about-section">About</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </div> <!-- /.widget -->
+        </div> <!-- /.col-lg-3 -->
+		
+      </div> <!-- /.row -->
+
+      <div class="row mt-5">
+        <div class="col-12 text-center">
+          <p class="copyright">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ -->
+          </p>
+        </div>
+      </div>
+    </div> <!-- /.container -->
+  </div> <!-- /.site-footer -->
+
+  <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <script src="../static/js/jquery-3.4.1.min.js"></script>
+  <script src="../static/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="../static/js/popper.min.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/owl.carousel.min.js"></script>
+  <script src="../static/js/jquery.easing.1.3.js"></script>
+  <script src="../static/js/jquery.animateNumber.min.js"></script>
+  <script src="../static/js/jquery.waypoints.min.js"></script>
+  <script src="../static/js/jquery.fancybox.min.js"></script>
+  <script src="../static/js/aos.js"></script>  
+  <script src="../static/js/custom.js"></script> 
+  <script src="../static/js/prism.js"></script>  
+  <script src="../static/js/propio.js"></script>
+  
+</body>
+
+</html>
+
+
+

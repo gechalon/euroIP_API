@@ -1,0 +1,656 @@
+<!-- /*
+* Template Name: Landing
+* Template Author: Untree.co
+* Author URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="API for Decoupling IP Info">
+  <link rel="icon" type="image/x-icon" href="../static/images/favicon.png">
+  <meta name="keywords" content="Data decoupling, Free trial, Privacy, personal data, API, gdpr, geolocation, ccpa, ip tracker" />
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.privacy4ip.com" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../static/css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="../static/fonts/icomoon/style.css">
+  <link rel="stylesheet" href="../static/fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="../static/css/aos.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+
+  
+  <title>Privacy4IP</title>
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="100">
+
+  <div class="site-mobile-menu site-navbar-target">
+    <div class="site-mobile-menu-header">
+      <div class="site-mobile-menu-close">
+        <span class="icofont-close js-menu-toggle"></span>
+      </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+  </div>
+
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <a class="navbar-brand" href="/#">Privacy 4 IP<span class="text-primary">.</span></a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+		<ul class="navbar-nav mr-auto float-right" >
+		  <li class="nav-item">
+			<a href="/#data_section" class="nav-link">Data Privacy</a>
+		  </li>
+      <li class="nav-item">
+        <a href="/#legal_section" class="nav-link">Regulations</a>
+      </li>
+		  <li class="nav-item">
+			<a href="{{ url_for('pricing') }}" class="nav-link">Pricing</a>
+		  </li>
+		  <li class="nav-item">
+			<a href="{{ url_for('docs') }}" class="nav-link">Docs</a>
+		  </li>		  
+		  <li class="nav-item">
+			<a href="#about-section" class="nav-link">About</a>
+		  </li>
+		  <li class="nav-item">
+			<a href="{{ url_for('contact') }}" class="nav-link">Contact</a>
+		  </li>	
+		  <!-- <li class="nav-item">
+			<a href="{{ url_for('product') }}" class="nav-link">producto</a>
+		  </li>-->	
+		</ul>
+		<ul class="navbar-nav site-menu float-right" >		  
+		{%if session['username'] : %}		 	
+		  <li class="cta-button-outline">
+			<a href="/useraccount#profile_container">
+			 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"	><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>
+			{{session['username']}}
+			</a>
+		  </li>
+		{%else : %}
+		  <li class="cta-button-outline"><a href="{{ url_for('login') }}">Log in</a></li>
+		  <li class="cta-primary"><a href="{{url_for('signup')}}">Create account</a></li>		 	
+		{%endif%}
+		</ul>
+	  </div>
+	</nav>
+
+
+  <div class="untree_co-section" id="features-section" >
+    <div class="container" style="background-color:#f1f3f3">
+      <div class="row justify-content-between">
+        <div class="col-lg-5">
+          <span class="caption" data-aos="fade-up" data-aos-delay="0">IP address info service</span>
+          <h3 class="heading mb-4" data-aos="fade-up" data-aos-delay="100">API designed to decouple I.P. data</h3>
+          <div class="mb-4" data-aos="fade-up" data-aos-delay="200">
+            <p>Complining with GDPR, our services are designed to protect prevent identification from customers' I.P.</p>  
+
+            <ul class="list-unstyled ul-check primary">
+			<!--<ul class="list-unstyled">-->              
+			  <li><span style="width:1em;height:1em;"><i>Data decoupled to prevent identification of individuals</i></span></li>
+			  <li><span style="width:1em;height:1em;"><i>Accurate geolocation, fuzzyed by algorithmic calculation</i></span></li>
+              <!--<span id="boot-icon" class="bi bi-x-circle" style="font-size: 1rem; color: rgb(255, 0, 0);"> Not interested in the privacy of my clients -> Go to the competition</span>-->
+            </ul>
+			
+          </div> <!-- /.mb-4 -->
+        </div>
+		
+        <div class="col-lg-7" data-aos="fade-up" data-aos-delay="400">
+		  {%if (not ipDetails["bogon"] or ipDetails["bogon"]!=True) and (not ipDetails["valid"] or ipDetails["valid"]!=False) :%}
+		  <span >The <b>excess</b> of information obtained from your IP (scroll down &darr;): </span>
+		  {%endif%}
+         		  
+			<form id="tryit_form" action="/" method="post">
+				<input type="text" id="tryit_ip" name="tryit_ip" value="{{ ipDetails['ip'] }}"/>
+				<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+				<button value="search IP" type="submit" onclick="return ValidateIPaddress(document.getElementById('tryit_ip').trim())"><span class="bi bi-search"></span></button>				
+			</form>
+     <div id="pizarra">					
+			<div class="este">
+			{%if ipDetails["bogon"]==True :%}
+				<span class="tiza_verde2">IP : </span>{{ ipDetails["ip"] }}
+								</br>										
+				<span class="tiza_roja">Error: This IP address is a bogon IP. </span>
+								</br>	
+			{%elif ipDetails["valid"]==False :%}
+				<span class="tiza_verde2">IP : </span>{{ ipDetails["ip"] }}
+								</br>										
+				<span class="tiza_roja">Error: This IP address is NOT a Valid IP. </span>
+								</br>				
+			{%else:%}	<!-- si es una ip valida :-->		
+							<span class="tiza_verde2">IP : </span><b>{{ ipDetails["ip"] }}</b>
+								</br>	</br>
+                <span class="tiza_verde2">Proxy(Forwarded) IP: </span>{{ ipDetails["es_proxy"] }}
+              </br>	
+            <span class="tiza_verde2">Using TOR: </span>{{ipDetails["is_using_tor"]}}
+              </br>
+            <span class="tiza_verde2">Threats list: </span>{{ipDetails["threats_list"]}}
+              </br>
+            {%if ipDetails["threats_list"]==True :%}	
+            <span class="tiza_verde2">Subnet: </span>{{ipDetails["subnet"]}}
+              </br>
+            {%endif%}	
+            <span class="tiza_verde2">Proxies list: </span>{{ipDetails["proxies_list"]}}
+              </br></br>	  
+              <span class="tiza_verde2">user_agent :</span> 
+								<ul>
+								{% for key, value in ipDetails["user_agent"].items() %}
+								<li><span class="tiza_verde2">{{ key }} :</span> {{ value }}</li>
+								{% endfor %}
+								</ul>
+							
+							<span class="tiza_verde2">Headers : </span> 
+								<ul>
+								{% for key, value in ipDetails["headers_dict"].items() %}
+								<li><span class="tiza_verde2">{{ key }} :</span>  {{ value }}</li>
+								{% endfor %}
+								</ul>
+							  									
+							
+							
+							
+							<span class="tiza_verde2">IP data (ipwhois) for {{ ipDetails["ip"] }}:</span>
+								<ul>
+								{% for key, value in ipDetails["ipinfo_ipwhois"].items() %}
+								<li><span class="tiza_verde2">{{ key }} :</span> {{ value }}</li>
+								{% endfor %}
+								</ul>
+								
+							
+							<span class="tiza_verde2">IP data (GeoIP) for {{ ipDetails["ip"] }}:</span>
+								<ul>
+								{% for key, value in ipDetails["ipinfo_bdGeoIP"].items() %}
+								<li><span class="tiza_verde2">{{ key }} :</span> {{ value }}</li>
+								{% endfor %}
+								</ul>
+								
+							
+							<span class="tiza_verde2">geoloc_lat:</span>{{ipDetails["lat_pto_Exacto"]}}</br>	
+							<span class="tiza_verde2">geoloc_lon:</span>{{ipDetails["lon_pto_Exacto"]}}</br>							
+							<span class="tiza_verde2">aproxZone_json:</span>{{ipDetails["aproxZone_json"]}}</br>
+							<span class="tiza_verde2">fuzzy_circle:</span>{{ipDetails["fuzzy_circle"]}}</br>
+			{%endif%}			
+			</div><!-- /.este -->
+		  </div><!-- /.pizarra -->
+        </div> <!-- /.col-md-4 -->
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+  </div> <!-- /.untree_co-section -->
+  
+
+  <div class="untree_co-section bg-light" id="data_section">
+    <div class="container"><span class="caption">How we decouple data</span>
+		<ul class="list-unstyled ul-check primary">
+			<!--<ul class="list-unstyled">-->
+              <li><span style="width:1em;height:1em;">
+                 <u>Split1</u>: Security concerning data.<br>
+                 <u>Split2</u>: Fuzzy geolocation data.<br>
+                 <u>Split3</u>: ISP concerning data.<br>
+                 <u>Split4</u>: User device data</li></span>
+			  <li><span style="width:1em;height:1em;">You can hire only one split. If you are not interested in your customer's privacy, you should hire a competitor.</li></span>
+              <!--<span id="boot-icon" class="bi bi-x-circle" style="font-size: 1rem; color: rgb(255, 0, 0);"> Not interested in the privacy of my clients -> Go to the competition</span>-->
+            </ul>
+      <div class="row justify-content-between">
+        <div class="col-lg-5 order-lg-2 js-custom-dots">
+		
+          <a href="#" class="service link horizontal d-flex active" data-aos="fade-left" data-aos-delay="0">
+            <div class="service-icon color-3 mb-4">
+              <svg class="bi bi-app-indicator" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              </svg>
+            </div> <!-- /.icon -->
+            <div class="service-contents">
+              <h3>Security</h3>
+			  <p>Threats, Proxy, Tor, abuse contact,...</p>
+              <!-- <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>-->
+            </div> <!-- /.service-contents-->
+          </a> <!-- /.service -->
+
+          <a href="#" class="service link horizontal d-flex" data-aos="fade-left" data-aos-delay="200">
+            <div class="service-icon color-1 mb-4" >
+              <svg class="bi bi-briefcase" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              </svg>
+            </div> <!-- /.icon -->
+            <div class="service-contents">
+              <h3>Fuzzy GeoLocation</h3>			  
+			  <p>Fuzzy geoloc, postal, city, time zone,...</p>
+            </div> <!-- /.service-contents-->
+          </a> <!-- /.service -->
+
+
+		  <a href="#" class="service link horizontal d-flex" data-aos="fade-left" data-aos-delay="200">
+            <div class="service-icon color-6 mb-4" >
+              <svg class="bi bi-arrow-right-circle-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              </svg>
+            </div> <!-- /.icon -->
+            <div class="service-contents">
+              <h3>ASN(isp)</h3>
+			  <p>ASN code, type, route, registry,...</p>
+            </div> <!-- /.service-contents-->
+          </a> <!-- /.service -->
+			
+		
+          <a href="#" class="service link horizontal d-flex" data-aos="fade-left" data-aos-delay="100">
+            <div class="service-icon color-5 mb-4">
+              <svg class="bi bi-arrow-repeat" width="1em" height="1em" viewBox="0 0 16 16" fill="gray" xmlns="http://www.w3.org/2000/svg">
+              </svg>
+            </div> <!-- /.icon -->
+            <div class="service-contents">
+              <h3>User Device</h3>
+			  <p>Device type, browser, OS, region, country,...</p>
+            </div> <!-- /.service-contents-->
+          </a> <!-- /.service -->
+
+	
+			
+        </div>
+        <div class="col-lg-7">
+          <div class="img-shadow">
+            <div class="owl-single no-dots owl-carousel">
+
+			{%if (not ipDetails["bogon"] or ipDetails["bogon"]!=True) and (not ipDetails["valid"] or ipDetails["valid"]!=False) and ipDetails["ip"] :%}
+			<!-- si es una ip valida pq cumple no_bogon Y valid-->
+			
+            <div class="item">
+                <span class="number">security</span>					
+				<div id="pizarra_security"   class="img-fluid">	
+					<div class="este">						
+							<span class="tiza_roja">IP address: </span>{{ ipDetails["ip"] }}
+								</br>										
+							<span class="tiza_roja">Is a proxy IP : </span>{{ ipDetails["es_proxy"] }}
+								</br>
+							<span class="tiza_roja">Is a Tor IP : </span>{{ ipDetails["is_using_tor"] }}
+								</br>
+							<span class="tiza_roja">Is a Bogon IP : </span>False
+								</br>
+							<span class="tiza_roja">IP from : </span>{{ ipDetails["ipinfo_ipwhois"]['nets'][0]['country']}}
+								</br>		
+							<span class="tiza_roja">ASN : </span>{{ ipDetails["ipinfo_ipwhois"]['nets'][0]['name']}}
+								</br>
+							<span class="tiza_roja">cidr : </span>{{ ipDetails["ipinfo_ipwhois"]['nets'][0]['cidr']}}
+								</br>			
+							<span class="tiza_roja">ISP abuse contact : </span>{{ ipDetails["ipinfo_ipwhois"]['nets'][0]['emails']}}
+								</br>	
+							<span class="tiza_roja">Threats list: </span>{{ ipDetails["threats_list"]}} 							
+								</br>
+							{%if ipDetails["threats_list"] : %} 	
+							<span class="tiza_roja">Threat subnet : </span>{{ ipDetails["subnet"]}}
+								</br>
+							{%endif%}		
+							<span class="tiza_roja">Proxies list : </span>{{ ipDetails["proxies_list"]}}
+								</br>								
+				    </div>
+				</div><!-- /.pizarra -->        
+            </div>
+              
+            <div class="item">
+                <span class="number">geoLoc</span>
+                <div id="pizarra_security"  class="img-fluid">	
+					<div class="este">	   				  
+							<span class="tiza_azul">IP de cliente: </span>{{ ipDetails["ip"] }}
+								</br>										
+							<span class="tiza_azul">Fuzzy geolocation box: </span>
+							{%if ipDetails["aproxZone_json"]: %}
+								{{ ipDetails["aproxZone_json"][0]['boundingbox'] }}
+							{%endif%}
+								</br>	
+							<span class="tiza_azul">Fuzzy geolocation circle: </span>{{fuzzy_circle}}
+								</br>
+							<span class="tiza_azul">Postal code: </span>{{ ipDetails["ipinfo_bdGeoIP"]['postal_code'] }}
+															</br>		
+							<span class="tiza_azul">City: </span>{{ ipDetails["ipinfo_bdGeoIP"]['city'] }}
+															</br>		
+							<span class="tiza_azul">Region: </span>{{ ipDetails["ipinfo_bdGeoIP"]['region_code'] }}
+															</br>	
+							<span class="tiza_azul">Country: </span>{{ ipDetails["ipinfo_bdGeoIP"]['country_name'] }}
+															</br>	
+							<span class="tiza_azul">Continent: </span>{{ ipDetails["ipinfo_bdGeoIP"]['continent'] }}
+															</br>	
+							<span class="tiza_azul">Currency: </span>{{ ipDetails["ipinfo_bdGeoIP"][''] }}
+								</br>
+							<span class="tiza_azul">Time_zone: </span>{{ ipDetails["ipinfo_bdGeoIP"]['time_zone'] }}	
+				    </div>
+				  </div><!-- /.pizarra -->
+            </div>
+				
+			<div class="item">
+                <span class="number">asn</span>
+                <div id="pizarra_security"  class="img-fluid">	
+					<div class="este">	   				  
+							<span class="tiza_verde2">IP de cliente: </span>{{ ipDetails["ipinfo_ipwhois"]['query'] }}
+								</br>										
+							<span class="tiza_verde2">ASN name : </span>{{ ipDetails["ipinfo_ipwhois"]['nets'][0]['name']}}
+								</br>
+							<span class="tiza_verde2">ASN code : </span>{{ ipDetails["ipinfo_ipwhois"]['asn']}}
+								</br>	
+							<span class="tiza_verde2">ASN registry : </span>{{ ipDetails["ipinfo_ipwhois"]['asn_registry']}}
+								</br>
+							<span class="tiza_verde2">ASN cidr : </span>{{ ipDetails["ipinfo_ipwhois"]['asn_cidr']}}
+								</br>	
+							<span class="tiza_verde2">ASN range : </span>{{ ipDetails["ipinfo_ipwhois"]['nets'][0]['range']}}
+								</br>
+							<span class="tiza_verde2">ASN description : </span>{{ ipDetails["ipinfo_ipwhois"]['nets'][0]['description']}}
+								</br>
+							<span class="tiza_verde2">ASN contact : </span>{{ ipDetails["ipinfo_ipwhois"]['nets'][0]['emails']}}
+								</br>
+							<span class="tiza_verde2">ASN country : </span>{{ ipDetails["ipinfo_ipwhois"]['nets'][0]['country']}}
+								</br>			
+				    </div>
+				  </div><!-- /.pizarra -->
+            </div>	
+				
+			<div class="item">
+                <span class="number">device</span>
+                <div id="pizarra_security"  class="img-fluid" >	
+					<div class="este">	   				  
+							<span class="tiza_gris">IP de cliente: </span>{{ ipDetails["ip"] }}
+								</br>										
+							<span class="tiza_gris">Browser: </span>{{ ipDetails["user_agent"]['user_agent'] }}
+								</br>
+							<span class="tiza_gris">S.O.: </span>{{ ipDetails["user_agent"]['os'] }}
+															</br>	
+							<span class="tiza_gris">Device type: </span>{{ ipDetails["user_agent"]['device'] }}
+															</br>	
+							<span class="tiza_gris">Languaje: </span>{{ ipDetails["headers_dict"]['Accept-Language']}}
+															</br>	
+							<span class="tiza_gris">Region: </span>{{ ipDetails["ipinfo_bdGeoIP"]['region_code'] }}
+															</br>	
+							<span class="tiza_gris">Country: </span>{{ ipDetails["ipinfo_bdGeoIP"]['country_name'] }}
+															</br>	
+							<span class="tiza_gris">Continent: </span>{{ ipDetails["ipinfo_bdGeoIP"]['continent'] }}
+															</br>	
+							<span class="tiza_gris">Currency: </span>{{ ipDetails["ipinfo_bdGeoIP"][''] }}
+								</br>
+							<span class="tiza_gris">Time_zone: </span>{{ ipDetails["ipinfo_bdGeoIP"]['time_zone'] }}
+								</br>	
+				    </div>
+					<div class="overlay">
+						<h1>Coming Soon</h1>
+					</div>
+				  </div><!-- /.pizarra -->
+              </div>
+			{%else%}
+			 <div class="item">
+                <span class="number"></span>
+					
+				  <div id="pizarra_security"   class="img-fluid">	
+					<div class="este">
+						
+							<span class="tiza_roja">IP: </span>{{ ipDetails["ip"] }}
+								</br>										
+							<span class="tiza_roja">ERROR. No data for this IP address.</span>
+								</br>		
+				    </div>
+				  </div><!-- /.pizarra -->
+        
+              </div> 
+			{%endif%}	
+            </div>
+
+          </div>
+          
+        </div> <!-- /.col-md-4 -->
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+  </div> <!-- /.untree_co-section -->
+
+  
+  
+  <div class="untree_co-section" id="legal_section">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-12 text-center">
+          <span class="caption">Legal</span>
+          <h2 class="heading">GDPR and case law in Europe</h2>
+			<p>
+			According to the EU's General Data Protection Regulation (GDPR), an IP address can be considered personal data if, when combined with any other related information, it can be directly or indirectly linked to an identified or identifiable natural person.</br>
+			</p>
+          <div>
+            <a href="#" class="js-custom-prev-v2 cusotm-slider-nav custom-prev"><span><svg class="bi bi-arrow-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M5.854 4.646a.5.5 0 0 1 0 .708L3.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z"/>
+              <path fill-rule="evenodd" d="M2.5 8a.5.5 0 0 1 .5-.5h10.5a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+            </svg></span></a>
+            <a href="#" class="js-custom-next-v2 cusotm-slider-nav custom-next"><span>
+              <svg class="bi bi-arrow-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10.146 4.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L12.793 8l-2.647-2.646a.5.5 0 0 1 0-.708z"/>
+                <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8z"/>
+              </svg></span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+
+        <div class="col-lg-12" data-aos="fade" data-aos-delay="200">
+          <div class="owl-2-slider owl-carousel">
+
+            
+            <div class="item">
+              <div class="untree_co-testimonial d-flex">
+
+                <div class="text">
+                  <blockquote>
+                    The principles of "Privacy by Design" and "Privacy by Default" are set out in Article 25 of the General Data Protection Regulation (GDPR) and allow for optimal protection of personal data at the design stage and in every use of a new technology.
+					<a href="https://gdpr-info.eu/issues/privacy-by-design/"target="_blank" rel="noopener noreferrer">Learn more</a>
+                  </blockquote>
+                  
+                </div>
+              </div> <!-- /.untree_co-testimonial -->
+            </div>
+            
+            <div class="item">
+              <div class="untree_co-testimonial d-flex">
+
+                <div class="text">
+                  <blockquote>In its judgment of 19 October 2016, the CJEU determines Dynamic IP Addresses personal data within the meaning of Article 2(a) of Directive 95/46 but can also be processed for operability purposes within the meaning of Article 2(2) of the directive.
+				            <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A62014CJ0582" target="_blank" rel="noopener noreferrer">Learn more</a>
+                  </blockquote>
+                  
+                </div>
+              </div> <!-- /.untree_co-testimonial -->
+            </div>
+
+            <div class="item">
+              <div class="untree_co-testimonial d-flex">
+
+                <div class="text">
+                  <blockquote>
+                    In Spain, the Contentious Chamber of the Supreme Court who, in its <a href="http://www.poderjudicial.es/search/doAction?action=contentpdf&databasematch=TS&reference=7195354&links=&optimize=20141023&publicinterface=true" target="_blank" rel="noopener noreferrer"> Judgment of 3 October 2014 (FJ 4)</a> establishes, with no doubt, that the IP must be considered as personal data.
+						Its criterion is based on the "possibility" of identifying the person behind the IP address, whether by direct or indirect means. 
+                  </blockquote>
+                  
+                </div>
+              </div> <!-- /.untree_co-testimonial -->
+            </div>
+
+
+          </div>
+        </div>
+      </div> <!-- /.row -->    
+    </div> <!-- /.container -->  
+  </div> <!-- /.untree_co-section -->
+	
+	
+	
+	<div class="untree_co-section" id="international_section">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-12 text-center">
+          <span class="caption">Internacional</span>
+          <h2 class="heading">Internacional data protection regulations</h2>
+			<!-- <p>
+			Other regulations and legal frameworks with a high level of personal data protection where the use of 
+Privacy 4 IP would apply</br>
+			</p>-->
+          <div>
+            <a href="#" class="js-custom-prev-v2 cusotm-slider-nav custom-prev"><span><svg class="bi bi-arrow-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M5.854 4.646a.5.5 0 0 1 0 .708L3.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z"/>
+              <path fill-rule="evenodd" d="M2.5 8a.5.5 0 0 1 .5-.5h10.5a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+            </svg></span></a>
+            <a href="#" class="js-custom-next-v2 cusotm-slider-nav custom-next">
+				<span>
+              <svg class="bi bi-arrow-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10.146 4.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L12.793 8l-2.647-2.646a.5.5 0 0 1 0-.708z"/>
+                <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8z"/>
+              </svg></span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+
+        <div class="col-lg-12" data-aos="fade" data-aos-delay="200">
+          <div class="owl-2-slider owl-carousel">
+            
+            <div class="item">
+              <div class="untree_co-testimonial d-flex">
+
+                <div class="text">
+                  <blockquote>The state of California passed its own rule, the <a href="https://www.oag.ca.gov/privacy/ccpa" target="_blank" rel="noopener noreferrer">California Consumer Privacy Act (CCPA)</a>. Washington, Hawaii, New York, New Jersey and Rhode Island are reviewing new privacy laws.
+                  </blockquote>
+                  
+                </div>
+              </div> <!-- /.untree_co-testimonial -->
+            </div>
+
+            <div class="item">
+              <div class="untree_co-testimonial d-flex">
+
+                <div class="text">
+                  <blockquote>
+                    Brazil's Lei Geral de Proteção de Dados: <a href="http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709.htm" target="_blank" rel="noopener noreferrer">LGPD, or Law 13.709 </a>, is inspired by the EU's GDPR, and aims to regulate the use, protection and transfer of personal data. 
+					        </blockquote>
+                  
+                </div>
+              </div> <!-- /.untree_co-testimonial -->
+            </div>
+
+
+            <div class="item">
+              <div class="untree_co-testimonial d-flex">
+
+                <div class="text">
+                  <blockquote>
+                    Canada's Personal Information Protection and Electronic Documents Act <a href="https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/"target="_blank" rel="noopener noreferrer">(PIPEDA)</a> is often regarded as the closest data privacy law to the GDPR.
+                  </blockquote>
+                  
+                </div>
+              </div> <!-- /.untree_co-testimonial -->
+            </div>
+			
+			<div class="item">
+              <div class="untree_co-testimonial d-flex">
+
+                <div class="text">
+                  <blockquote>
+                    Countries with a high level of data protection: Switzerland, Australia, New Zealand, Japan, UK, Korea, Singapore<a href="https://edpb.europa.eu/system/files/2021-06/edpb_recommendations_202001vo.2.0_supplementarymeasurestransferstools_en.pdf"target="_blank" rel="noopener noreferrer">(Recommendations)</a>
+                  </blockquote>
+                  
+                </div>
+              </div> <!-- /.untree_co-testimonial -->
+      </div>
+
+      <div class="item">
+        <div class="untree_co-testimonial d-flex">
+
+          <div class="text">
+            <blockquote>
+              Data privacy laws and regulations around the world. <a href="https://en.wikipedia.org/wiki/Information_privacy#Laws" title="" target="_blank" rel="noopener noreferrer">International regulations</a>
+            </blockquote>
+            
+          </div>
+        </div> <!-- /.untree_co-testimonial -->
+</div>
+			
+          </div>
+        </div>
+      </div> <!-- /.row -->    
+    </div> <!-- /.container -->  
+  </div> <!-- /.untree_co-section -->
+
+
+  <div class="site-footer">
+
+    <div class="footer-dots"></div> <!-- /.footer-dots -->
+    <div class="container">
+
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="widget" id="about-section">
+            <h5>About <span class="text-primary">Privacy4IP</span>.</h5>
+            <p>
+              Privacy4IP is an European company. Our servers are located in Europe.</br> Our state-of-the-art API complies with the <a href="/#international_section">most demanding international regulations</a> to protect the privacy of your personal data, maintaining the maximum statistical or security interest.</p>
+              </br>
+            <h5>About <span class="text-primary">me</span>.</h5>
+            <p>
+              Privacy4IP was created by me, Gorka Echeverria. Software engineer.</br> Concerned about the present of data protection in the world of data engineering.</p>
+          
+          </div> <!-- /.widget -->
+          
+        </div> <!-- /.col-lg-3 -->
+
+        <div class="col-lg-3 ml-auto">
+          <div class="widget">
+            <h3>Navigation</h3>
+            <ul class="list-unstyled float-left links">
+              <li><a href="/#">Home</a></li>
+              <li><a href="/#data_section">Privacy protection</a></li>
+			        <li><a href="/#legal_section">Regulations</a></li>
+              <li><a href="/docs">Docs</a></li>
+              <li><a href="/pricing">Pricing</a></li>
+              <li><a href="#about-section">About</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </div> <!-- /.widget -->
+        </div> <!-- /.col-lg-3 -->
+		
+      </div> <!-- /.row -->
+
+      <div class="row mt-5">
+        <div class="col-12 text-center">
+          <p class="copyright">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ -->
+          </p>
+        </div>
+      </div>
+    </div> <!-- /.container -->
+  </div> <!-- /.site-footer -->
+
+  <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <script src="../static/js/jquery-3.4.1.min.js"></script>
+  <script src="../static/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="../static/js/popper.min.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/owl.carousel.min.js"></script>
+  <script src="../static/js/jquery.easing.1.3.js"></script>
+  <script src="../static/js/jquery.animateNumber.min.js"></script>
+  <script src="../static/js/jquery.waypoints.min.js"></script>
+  <script src="../static/js/jquery.fancybox.min.js"></script>
+  <script src="../static/js/aos.js"></script>  
+  <script src="../static/js/custom.js"></script>   
+  <script src="../static/js/propio.js"></script>
+  
+  
+</body>
+
+</html>

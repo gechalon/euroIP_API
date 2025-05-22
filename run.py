@@ -904,7 +904,7 @@ def customer_portal():
 def webhook_received():
     
     webhook_secret = enviroment.stripe_webhook_secret  
-    #webhook_secret = "whsec_sNyfkjkT4De2D28Ifrp8T5xCJs2vy6t8"#enviroment.stripe_webhook_secret    
+   
     request_data = json.loads(request.data)
           
     print("Tipo de webhook: "+str(request_data['type']))
